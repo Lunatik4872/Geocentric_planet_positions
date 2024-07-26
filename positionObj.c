@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <math.h>
+#include <limits.h>
 
 //Constant clacul sun position
 #define LONGITUDE_J2010 4.8791937
@@ -17,11 +18,11 @@ bool IsBixectil(int year){
 float* PosSun(int year, int month, int day){
     // Nombre de jours écoulé depuis le 1er janvier 2010 //
     float d = day + 364; 
-    float daysInMonth[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    float daysInMonth[11] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30};
 
     for (unsigned i = 2011; i < year; i++) d += (IsBixectil(i)) ? 366 : 365;
     if(IsBixectil(year)) daysInMonth[1] = 29;
-    for(unsigned i = 0; i < month - 1; i++) d += daysInMonth[i];
+    for(unsigned i = 0; i < month-1; i++) d += daysInMonth[i];
     ///////////////////////////////////////////////////////
 
     float m = d/365.242191 + LONGITUDE_J2010 + LONGITUDE_PERIGEE; // average anomaly 
@@ -35,12 +36,13 @@ float* PosSun(int year, int month, int day){
     result[1] = 0;
     result[2] = (angularSize*180)/PI;
 
-    printf("longitude : %f\ntaille angulaire : %f\n",result[0],result[2]);
     return result;
 }
 
-
 int main(){
-    PosSun(2024,7,25);
+    float* sun = PosSun(2024,7,26);
+    printf("Sun :\n   longitude : %f\n   latitude : %f\n   taille angulaire : %f\n",sun[0],sun[1],sun[2]);
+    free(sun);
+
     return 0;
 }
