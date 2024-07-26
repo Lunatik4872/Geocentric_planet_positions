@@ -3,13 +3,7 @@
 #include <stdbool.h>
 #include <math.h>
 #include <limits.h>
-
-//Constant clacul sun position
-#define LONGITUDE_J2010 4.8791937
-#define LONGITUDE_PERIGEE 4.941244
-#define EXENTRICITE_ST 0.0002916
-#define PI 3.1415927
-#define ANGLE0 0.0093047
+#include "constants.h"
 
 bool IsBixectil(int year){
     return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
