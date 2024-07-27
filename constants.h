@@ -106,4 +106,6 @@
 
 #define PI 3.1415927
 
+typedef struct Planet Planet;
+
 #endif
