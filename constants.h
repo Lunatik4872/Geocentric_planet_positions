@@ -5,6 +5,7 @@
 #define LONGITUDE_J2010 4.8791937
 #define LONGITUDE_PERIGEE 4.941244
 #define EXENTRICITE_ST 0.0002916
+#define ANGLE0 0.0093047
 //////////////////////////////
 
 //Constant clacul Mercure position
@@ -15,6 +16,8 @@
 #define HALF_WIDE_AXIS_ORBIT_ME 0.387098
 #define ECLIPTIC_ORBIT_INCLINATION_ME 0.1222621
 #define LONGITUDE_ASCENDING_NODE_ME 0.8455946
+#define ANGLE0_ME 0.1176352
+#define MAGNITUDE_1UA_ME -0.42	
 //////////////////////////////
 
 //Constant clacul Venus position
@@ -25,6 +28,8 @@
 #define HALF_WIDE_AXIS_ORBIT_VE 0.723329
 #define ECLIPTIC_ORBIT_INCLINATION_VE 0.0592487
 #define LONGITUDE_ASCENDING_NODE_VE 1.3398718
+#define ANGLE0_VE 0.2953097
+#define MAGNITUDE_1UA_VE -4.40
 //////////////////////////////
 
 //Constant clacul Earth position
@@ -35,6 +40,8 @@
 #define HALF_WIDE_AXIS_ORBIT_EA 0.999985
 #define ECLIPTIC_ORBIT_INCLINATION_EA 0
 #define LONGITUDE_ASCENDING_NODE_EA 0
+#define ANGLE0_EA 0
+#define MAGNITUDE_1UA_EA 0
 //////////////////////////////
 
 //Constant clacul March position
@@ -45,6 +52,8 @@
 #define HALF_WIDE_AXIS_ORBIT_MA 1.523689
 #define ECLIPTIC_ORBIT_INCLINATION_MA 0.0322834
 #define LONGITUDE_ASCENDING_NODE_MA 0.8662418
+#define ANGLE0_MA 0.1633628
+#define MAGNITUDE_1UA_MA -1.52
 //////////////////////////////
 
 //Constant clacul Jupiter position
@@ -55,6 +64,8 @@
 #define HALF_WIDE_AXIS_ORBIT_JU 5.20278
 #define ECLIPTIC_ORBIT_INCLINATION_JU 0.0227504
 #define LONGITUDE_ASCENDING_NODE_JU 1.755714
+#define ANGLE0_JU 3.4337608
+#define MAGNITUDE_1UA_JU -9.40
 //////////////////////////////
 
 //Constant clacul Saturn position
@@ -65,6 +76,8 @@
 #define HALF_WIDE_AXIS_ORBIT_SA 9.51134
 #define ECLIPTIC_ORBIT_INCLINATION_SA 0.0434116
 #define LONGITUDE_ASCENDING_NODE_SA 1.9853469
+#define ANGLE0_SA 2.8902652
+#define MAGNITUDE_1UA_SA -8.88
 //////////////////////////////
 
 //Constant clacul Uranus position
@@ -75,6 +88,8 @@
 #define HALF_WIDE_AXIS_ORBIT_UR 19.21814
 #define ECLIPTIC_ORBIT_INCLINATION_UR 0.0134924
 #define LONGITUDE_ASCENDING_NODE_UR 1.2902689
+#define ANGLE0_UR 1.1484266
+#define MAGNITUDE_1UA_UR -7.19
 //////////////////////////////
 
 //Constant clacul Neptune position
@@ -85,9 +100,10 @@
 #define HALF_WIDE_AXIS_ORBIT_NE 30.1985
 #define ECLIPTIC_ORBIT_INCLINATION_NE 0.0308452
 #define LONGITUDE_ASCENDING_NODE_NE 2.3017228
+#define ANGLE0_NE 1.0855948
+#define MAGNITUDE_1UA_NE -6.87
 //////////////////////////////
 
 #define PI 3.1415927
-#define ANGLE0 0.0093047
 
 #endif
