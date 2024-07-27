@@ -37,8 +37,8 @@ float* PosSun(int year, int month, int day){
 
     float d = DaySinceJ2010(year,month,day);
 
-    float m = d/365.242191 + LONGITUDE_J2010 + LONGITUDE_PERIGEE; // average anomaly 
-    float v = m + 2*EXENTRICITE_ST*sinf(m); // true anomaly
+    float m = d/365.242191 + LONGITUDE_J2010 - LONGITUDE_PERIGEE; // average anomaly 
+    float v = m + 2 * EXENTRICITE_ST * sinf(m); // true anomaly
     float eclipticLongitude = v + LONGITUDE_PERIGEE;
     float normalizedEclipticLongitude = fmodf(eclipticLongitude, 2*PI);
     float angularSize = ANGLE0 * ((1+EXENTRICITE_ST*cos(v))/(1-EXENTRICITE_ST*EXENTRICITE_ST));
@@ -46,7 +46,7 @@ float* PosSun(int year, int month, int day){
     float* result = (float*)malloc(3 * sizeof(float));
     result[0] = (normalizedEclipticLongitude*180)/PI;
     result[1] = 0;
-    result[2] = (angularSize*180)/PI;
+    result[2] = angularSize;
 
     return result;
 }
@@ -88,7 +88,7 @@ float* PosPlanetGeocentric(int year, int month, int day, Planet *planet){
     float* result = (float*)malloc(4 * sizeof(float));
     result[0] = (fmodf(geocentricEclipticLongitude, 2*PI)*180)/PI;
     result[1] = (fmodf(geocentricEclipticLatitude, 2*PI)*180)/PI;
-    result[2] = (fmodf(angularSize, 2*PI)*180)/PI;
+    result[2] = angularSize;
     result[3] = magnitude;
 
     return result;
@@ -128,7 +128,6 @@ int main(){
     Planet *uranus = creatPlanet(TROPICAL_YEAR_UR,LONGITUDE_J2010_UR,LONGITUDE_PERIGEE_UR,EXENTRICITE_ST_UR,HALF_WIDE_AXIS_ORBIT_UR,ECLIPTIC_ORBIT_INCLINATION_UR,LONGITUDE_ASCENDING_NODE_UR,ANGLE0_UR,MAGNITUDE_1UA_UR,false);
     Planet *neptune = creatPlanet(TROPICAL_YEAR_NE,LONGITUDE_J2010_NE,LONGITUDE_PERIGEE_NE,EXENTRICITE_ST_NE,HALF_WIDE_AXIS_ORBIT_NE,ECLIPTIC_ORBIT_INCLINATION_NE,LONGITUDE_ASCENDING_NODE_NE,ANGLE0_NE,MAGNITUDE_1UA_NE,false);
 
-    float* sun = PosSun(2024,7,27);
     float* mercureGeo = PosPlanetGeocentric(2024,7,27,mercure);
     float* venusGeo = PosPlanetGeocentric(2024,7,27,venus);
     float* marchGeo = PosPlanetGeocentric(2024,7,27,march);
@@ -138,7 +137,6 @@ int main(){
     float* neptuneGeo = PosPlanetGeocentric(2024,7,27,neptune);
 
     printf("Geocentric position :\n");
-    printf("Sun :\n   longitude : %f\n   latitude : %f\n   taille angulaire : %f\n\n",sun[0],sun[1],sun[2]);
     printf("Mercure :\n   longitude : %f\n   latitude : %f\n   taille angulaire : %f\n   magnitude : %f\n\n",mercureGeo[0],mercureGeo[1],mercureGeo[2],mercureGeo[3]);
     printf("Venus :\n   longitude : %f\n   latitude : %f\n   taille angulaire : %f\n   magnitude : %f\n\n",venusGeo[0],venusGeo[1],venusGeo[2],venusGeo[3]);
     printf("Earth :\n   longitude : 0\n   latitude : 0\n   taille angulaire : 0\n   magnitude : 0\n\n");
@@ -148,7 +146,6 @@ int main(){
     printf("Uranus :\n   longitude : %f\n   latitude : %f\n   taille angulaire : %f\n   magnitude : %f\n\n",uranusGeo[0],uranusGeo[1],uranusGeo[2],uranusGeo[3]);
     printf("Neptune :\n   longitude : %f\n   latitude : %f\n   taille angulaire : %f\n   magnitude : %f\n\n",neptuneGeo[0],neptuneGeo[1],neptuneGeo[2],neptuneGeo[3]);
 
-    free(sun);
     free(mercureGeo);
     free(venusGeo);
     free(marchGeo);
