@@ -51,6 +51,17 @@ float* PosSun(int year, int month, int day){
     return result;
 }
 
+float CalculBV(float eV, float eB, float c){
+    float mv = -2.5*log10f(eV)+c;
+    float mb = -2.5*log10f(eB)+c;
+
+    return mb-mv;
+}
+
+float ColorStar(float indiceColorBV){
+    return 4600*(1/(0.92 * indiceColorBV + 1.7) + 1/(0.92 * indiceColorBV + 0.62));
+}
+
 float HigherPlanets(float eclipticRayProjection, float heliocentricEclipticLongitude, float longitudeEarth, float radiusEarth){
     return heliocentricEclipticLongitude+atanf((radiusEarth*sinf(heliocentricEclipticLongitude-longitudeEarth))/(eclipticRayProjection-radiusEarth*cosf(heliocentricEclipticLongitude-longitudeEarth)));
 }
@@ -145,6 +156,14 @@ int main(){
     printf("Saturn :\n   longitude : %f\n   latitude : %f\n   taille angulaire : %f\n   magnitude : %f\n\n",saturnGeo[0],saturnGeo[1],saturnGeo[2],saturnGeo[3]);
     printf("Uranus :\n   longitude : %f\n   latitude : %f\n   taille angulaire : %f\n   magnitude : %f\n\n",uranusGeo[0],uranusGeo[1],uranusGeo[2],uranusGeo[3]);
     printf("Neptune :\n   longitude : %f\n   latitude : %f\n   taille angulaire : %f\n   magnitude : %f\n\n",neptuneGeo[0],neptuneGeo[1],neptuneGeo[2],neptuneGeo[3]);
+
+    float bvSun = CalculBV(550,300,-26.832);
+    float t = ColorStar(bvSun);
+    printf("Sun (%f %f) is : ",t,bvSun);
+    if(t<=1500) printf("RED !\n");
+    else if(t<=5500) printf("ORANGE !\n");
+    else if(t<=7500) printf("WHITE !\n");
+    else printf("BLUE !\n");
 
     free(mercureGeo);
     free(venusGeo);
