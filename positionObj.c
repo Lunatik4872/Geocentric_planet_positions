@@ -131,6 +131,8 @@ void destroyPlanet(Planet *planet){
 
 int main(){
 
+    int day = 29, month = 7, year = 2024;
+
     Planet *mercure = creatPlanet(TROPICAL_YEAR_ME,LONGITUDE_J2010_ME,LONGITUDE_PERIGEE_ME,EXENTRICITE_ST_ME,HALF_WIDE_AXIS_ORBIT_ME,ECLIPTIC_ORBIT_INCLINATION_ME,LONGITUDE_ASCENDING_NODE_ME,ANGLE0_ME,MAGNITUDE_1UA_ME,true);
     Planet *venus = creatPlanet(TROPICAL_YEAR_VE,LONGITUDE_J2010_VE,LONGITUDE_PERIGEE_VE,EXENTRICITE_ST_VE,HALF_WIDE_AXIS_ORBIT_VE,ECLIPTIC_ORBIT_INCLINATION_VE,LONGITUDE_ASCENDING_NODE_VE,ANGLE0_VE,MAGNITUDE_1UA_VE,true);
     Planet *march = creatPlanet(TROPICAL_YEAR_MA,LONGITUDE_J2010_MA,LONGITUDE_PERIGEE_MA,EXENTRICITE_ST_MA,HALF_WIDE_AXIS_ORBIT_MA,ECLIPTIC_ORBIT_INCLINATION_MA,LONGITUDE_ASCENDING_NODE_MA,ANGLE0_MA,MAGNITUDE_1UA_MA,false);
@@ -139,13 +141,13 @@ int main(){
     Planet *uranus = creatPlanet(TROPICAL_YEAR_UR,LONGITUDE_J2010_UR,LONGITUDE_PERIGEE_UR,EXENTRICITE_ST_UR,HALF_WIDE_AXIS_ORBIT_UR,ECLIPTIC_ORBIT_INCLINATION_UR,LONGITUDE_ASCENDING_NODE_UR,ANGLE0_UR,MAGNITUDE_1UA_UR,false);
     Planet *neptune = creatPlanet(TROPICAL_YEAR_NE,LONGITUDE_J2010_NE,LONGITUDE_PERIGEE_NE,EXENTRICITE_ST_NE,HALF_WIDE_AXIS_ORBIT_NE,ECLIPTIC_ORBIT_INCLINATION_NE,LONGITUDE_ASCENDING_NODE_NE,ANGLE0_NE,MAGNITUDE_1UA_NE,false);
 
-    float* mercureGeo = PosPlanetGeocentric(2024,7,27,mercure);
-    float* venusGeo = PosPlanetGeocentric(2024,7,27,venus);
-    float* marchGeo = PosPlanetGeocentric(2024,7,27,march);
-    float* jupiterGeo = PosPlanetGeocentric(2024,7,27,jupiter);
-    float* saturnGeo = PosPlanetGeocentric(2024,7,27,saturn);
-    float* uranusGeo = PosPlanetGeocentric(2024,7,27,uranus);
-    float* neptuneGeo = PosPlanetGeocentric(2024,7,27,neptune);
+    float* mercureGeo = PosPlanetGeocentric(year,month,day,mercure);
+    float* venusGeo = PosPlanetGeocentric(year,month,day,venus);
+    float* marchGeo = PosPlanetGeocentric(year,month,day,march);
+    float* jupiterGeo = PosPlanetGeocentric(year,month,day,jupiter);
+    float* saturnGeo = PosPlanetGeocentric(year,month,day,saturn);
+    float* uranusGeo = PosPlanetGeocentric(year,month,day,uranus);
+    float* neptuneGeo = PosPlanetGeocentric(year,month,day,neptune);
 
     printf("Geocentric position :\n");
     printf("Mercure :\n   longitude : %f\n   latitude : %f\n   taille angulaire : %f\n   magnitude : %f\n\n",mercureGeo[0],mercureGeo[1],mercureGeo[2],mercureGeo[3]);
