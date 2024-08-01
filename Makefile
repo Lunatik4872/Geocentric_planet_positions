@@ -1,7 +1,16 @@
-build :
-	gcc -Wall -o test.o -c positionObj.c
-	gcc -o test test.o -lm
-	./test
+CC = gcc
+CFLAGS = -Wall
+LDFLAGS = -lm
+OBJ = main.o positionObj.o
+
+all: resultat
+
+resultat: $(OBJ)
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f *.o test
+	rm -f *.o resultat
+
